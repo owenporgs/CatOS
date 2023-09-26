@@ -1,0 +1,1420 @@
+ver 00000
+<html>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+<style>
+  .brightnessfilter {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 99999999999999999999999999999;
+    background-color: rgba(0, 0, 0, 0);
+    pointer-events: none;
+  }
+
+  .loader {
+    border: 16px solid #212121;
+    border-radius: 50%;
+    border-top: 16px solid #5000ab;
+    width: 70px;
+    height: 0px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    display: none;
+  }
+
+  .loaderon {
+    border: 7px solid #212121;
+    border-radius: 50%;
+    border-top: 7px solid #5000ab;
+    width: 30px;
+    height: 0px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    display: none;
+    transition: opacity 0.5s;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    height: 0%;
+    width: 500px;
+    left: 50%;
+    bottom: -100%;
+    transition: all 0.4s;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    background-color: rgba(30, 30, 30, .7);
+    transform: translate(-50%, 0%);
+    backdrop-filter: blur(10px);
+    color: white;
+    z-index: 100000000000000000000;
+  }
+
+  .statusmenu {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 10px;
+    width: 80px;
+    height: 35px;
+    right: 99px;
+    bottom: 0px;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    transition: all 0.4s;
+    transform: translate(50%, 0%);
+    z-index: 100000000000000000000;
+  }
+
+  .calmenu {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 10px;
+    transform: translate(50%, 0%);
+    width: 45px;
+    height: 35px;
+    bottom: 0px;
+    right: 27.5px;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    transition: all 0.4s;
+    z-index: 100000000000000000000;
+  }
+
+  .startbutton {
+    position: relative;
+    height: 25px;
+    width: 25px;
+    top: 5px;
+    padding: 7px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border: none;
+    transition: opacity 0.25s;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 5px;
+  }
+
+  .startbutton:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .searchstart {
+    position: relative;
+    width: 94%;
+    left: 3%;
+    top: 3%;
+    height: 35px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    outline: none;
+  }
+
+  .searchstart:focus {
+    border: 3px solid #555;
+    border-bottom: 3px solid purple;
+  }
+
+  .body {
+    user-select: none; /
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+    background-image: url(".CatOSAssets/cat.jpg"), linear-gradient(to bottom right, purple, darkblue);
+    background-size: cover;
+    background-position: center;
+    color: white;
+  }
+
+  .centermid {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 10px;
+    height: 35px;
+    bottom: 10px;
+    display: flex;
+  }
+
+  .center {
+    position: relative;
+    bottom: 10px;
+    display: flex;
+    height: 35px;
+    bottom: 5px;
+    margin: 5px;
+    background-color: rgb(30, 30, 30);
+    border-radius: 10px;
+  }
+
+  .bottomstart {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 50px;
+    left: 0%;
+    background-color: rgb(30, 30, 30);
+    transform: translate(0%, -50px);
+    z-index: 100000000000001000000;
+  }
+
+  .power {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    left: 95%;
+    top: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    transform: translate(-60px, 0);
+    color: white;
+    border: none;
+  }
+
+  .powermenu {
+    position: fixed;
+    left: 59%;
+    bottom: 18%;
+    height: 0px;
+    width: 120px;
+    background-color: blue;
+    transition: all 0.2s;
+    border-radius: 10px;
+    z-index: 100000000000000100000;
+    overflow: hidden;
+  }
+
+  .status {
+    position: relative;
+    bottom: 5px;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    height: 35px;
+    width: 80px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+    border-radius: 10px;
+    z-index: 100000000000011000000;
+    margin: 5px;
+  }
+
+  .time {
+    position: relative;
+    bottom: 5px;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    font-size: 10px;
+    height: 35px;
+    width: 45px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+    border-radius: 10px;
+    z-index: 100000000000011000000;
+    margin: 5px;
+  }
+
+  .status:hover {
+    background-color: rgba(100, 100, 100);
+  }
+
+  .time:hover {
+    background-color: rgb(100, 100, 100);
+  }
+
+  .lock {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: purple;
+    background-image: url(".CatOSAssets/lock.jpg"), linear-gradient(to bottom right, purple, darkblue);
+    background-size: cover;
+    background-position: center;
+    z-index: 100100000000000000000;
+  }
+
+  .lockcover {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    transition: all 0.3s;
+  }
+
+  .lockusr {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(15px);
+  }
+
+  .batt {
+    height: 10px;
+    width: 20px;
+    border: 2px solid white;
+    border-radius: 3px;
+  }
+
+  .batlevel {
+    position: relative;
+    top: 1px;
+    left: 1px;
+    height: 8px;
+    width: 18px;
+    background-color: white;
+    border-radius: 1px;
+  }
+
+  .battop {
+    position: relative;
+    top: -5.5px;
+    left: 20px;
+    height: 4px;
+    width: 3px;
+    border-radius: 1px;
+    background-color: white;
+  }
+
+  .battxt {
+    color: white
+  }
+
+  .popup {
+    z-index: 9;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    min-height: 300px;
+    min-width: 600px;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    position: absolute;
+    transition: opacity 0.25s;
+    overflow: hidden;
+    left: 40px;
+    top: 30px;
+  }
+
+  .closebutton {
+    font-size: 17px;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    right: 0px;
+    transition: all 0.2s;
+    border: none;
+  }
+
+  .closebutton:hover {
+    background-color: red;
+  }
+
+  .minmaxbutton {
+    font-size: 17px;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    right: 25px;
+    transition: all 0.2s;
+    width: 27px;
+    border: none;
+  }
+
+  .minmaxbutton:hover {
+    background-color: grey;
+  }
+
+  .hidebutton {
+    font-size: 17px;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    right: 50px;
+    transition: all 0.2s;
+    width: 27px;
+    border: none;
+  }
+
+  .hidebutton:hover {
+    background-color: grey;
+  }
+
+  .popup-header {
+    cursor: move;
+    z-index: 10;
+    background-color: #2196f3;
+    color: #fff;
+    height: 25px;
+  }
+
+
+
+  .popup .resizer-right {
+    width: 5px;
+    height: 100%;
+    background: transparent;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: e-resize;
+  }
+
+  .popup .resizer-bottom {
+    width: 100%;
+    height: 5px;
+    background: transparent;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: n-resize;
+  }
+
+  .popup .resizer-both {
+    width: 5px;
+    height: 5px;
+    background: transparent;
+    z-index: 10;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: nw-resize;
+  }
+
+  .popup * {
+    -webkit-touch-callout: none;
+
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .shortcut {
+    height: 80px;
+    width: 65px;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    text-align: center;
+  }
+
+  .shortcut:hover {
+    background-color: rgba(255, 255, 255, .25);
+    color: black;
+  }
+
+  .slider {
+    -webkit-appearance: none;
+    width: calc(100% - 50px);
+    height: 10px;
+    border-radius: 5px;
+    background: purple;
+    border-radius: 10px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    position: absolute;
+    right: 20;
+    background-image: linear-gradient(to bottom right, purple, darkblue);
+  }
+
+  .slider:hover {
+    opacity: 1;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: purple;
+    cursor: pointer;
+    border: 5px solid grey;
+  }
+
+  .container {
+    display: block;
+    position: relative;
+    font-size: 22px;
+    user-select: none;
+    border-radius: 10px;
+  }
+
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    border-radius: 10px;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 70px;
+    background-color: #eee;
+    border-radius: 10px;
+    text-align: center
+  }
+
+  .container:hover input~.checkmark {
+    background-color: #ccc;
+  }
+
+  .container input:checked~.checkmark {
+    background-color: #2196F3;
+    background-image: linear-gradient(to bottom right, purple, blue);
+  }
+
+  .calendar-container header {
+    display: flex;
+    align-items: center;
+    padding: 10px 11px 5px;
+    justify-content: space-between;
+  }
+
+  header .calendar-navigation {
+    display: flex;
+  }
+
+  header .calendar-navigation span {
+    height: 20px;
+    width: 20px;
+    margin: 0 1px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+    user-select: none;
+    color: white;
+    font-size: 1rem;
+  }
+
+  .calendar-navigation span:last-child {
+    margin-right: -10px;
+  }
+
+  header .calendar-navigation span:hover {
+    background: #f2f2f2;
+  }
+
+  header .calendar-current-date {
+    margin: 0;
+    padding: 0;
+    font-weight: 50;
+    font-size: 1rem;
+  }
+
+  .calendar-body {
+    margin: 0;
+    padding: 0;
+    padding: 10px;
+  }
+
+  .calendar-body ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+    display: flex;
+    text-align: center;
+  }
+
+  .calendar-body .calendar-dates {
+    margin-bottom: 20px;
+  }
+
+  .calendar-body li {
+    width: calc(100% / 7);
+    font-size: 1rem;
+    color: #white;
+  }
+
+  .calendar-body .calendar-weekdays li {
+    cursor: default;
+    font-weight: 50;
+  }
+
+  .calendar-body .calendar-dates li {
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .calendar-dates li.inactive {
+    color: #aaa;
+  }
+
+  .calendar-dates li.active {
+    color: #fff;
+  }
+
+  .calendar-dates li::before {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .calendar-dates li.active::before {
+    background: #6332c5;
+    background-image: linear-gradient(to bottom right, purple, blue);
+  }
+
+  .calendar-dates li:not(.active):hover::before {
+    background: #e4e1e1;
+  }
+
+  .calendar-container {
+    background: rgb(50, 50, 50);
+    color: white;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  }
+</style>
+<body class="body" onclick="" id="body">
+  <div id="shortcuts">
+    <div class="shortcut" style="position: fixed; top:5px; left:5px; " onclick="system.openapp('files');"><img
+        src=".CatOSAssets/files.png" style="position:relative; top:15px; height:40px; width:40px;">
+      <div style="position: absolute; bottom: 0px; width:100%; text-align: center;">Files</div>
+    </div>
+    <div class="shortcut" style="position: fixed; top:90px; left:5px; " onclick="system.openapp('catcraft');"><img
+        src=".CatOSAssets/catcraft.png" style="position:relative; top:15px; height:40px; width:40px;">
+      <br>
+      <div style="position: absolute; bottom: 0px;  width:100%; text-align: center;">catcraft</div>
+    </div>
+
+  </div>
+  <div class="popup" id="console" style="display:none; opacity: 0; background-color: black;">
+    <div class="popup-header"><button class="hidebutton" id="consoleminbutton"
+        onclick="system.consoleminmax();">_</button><button class="minmaxbutton"
+        onclick="system.openapp(prompt('appid'));">0</button><button class="closebutton"
+        onclick="system.closeconsole();">X</button></div>
+    <input id="consoleinput" type="text"><button onclick="system.consoleSubmit();">submit</button>
+  </div>
+  <div class="popup" id="webbrowser" style="display:none; opacity: 0; background-color: black;">
+
+    <div class="popup-header"><input id="webinput" type="text"><button onclick="system.webgo();">Go</button><button
+        class="hidebutton" id="webbrowserminbutton" onclick="system.webbrowserminmax();">_</button><button
+        class="minmaxbutton" onclick="system.openapp(prompt('appid'));">0</button><button class="closebutton"
+        onclick="system.closewebbrowser();">X</button></div>
+    <iframe id="web" style="position: absolute; top:25px; left:0px; height:calc(100% - 25px); width:100%; "
+      src="https://www.google.com/?igu=1"></iframe>
+  </div>
+  <div class="popup" id="tetris"
+    style="display:none; opacity: 0; background-color: black; max-width: 500px; max-height: 600px; min-width: 500px; min-height: 600px; height:600px; width:5500px;">
+    <div class="popup-header"><button class="hidebutton" id="webbrowserminbutton"
+        onclick="system.tetrisminmax();">_</button><button class="minmaxbutton"
+        onclick="system.openapp(prompt('appid'));">0</button><button class="closebutton"
+        onclick="system.closetetris();">X</button></div>
+    <iframe id="tetrisframe" style="position: absolute; top:25px; left:0px; height:calc(100% - 25px); width:100%;" src=""></iframe>
+  </div>
+  <div class="popup" id="ai"
+    style="display:none; opacity: 0; background-color: black; max-height: 580px; max-width:500px;min-height: 580px; min-width:500px; height:580px; width:500px;">
+    <div class="popup-header"><button class="hidebutton" id="aiminbutton"
+        onclick="system.webbrowserminmax();">_</button><button class="minmaxbutton"
+        onclick="system.openapp(prompt('appid'));">0</button><button class="closebutton"
+        onclick="system.closeai();">X</button></div>
+    <iframe id="aiframe" style="position: absolute; top:25px; left:0px; height:calc(100% - 25px); width:100%;" src=".apps/ai.html"></iframe>
+  </div>
+  <div class="popup" id="settings" style="display:none; opacity: 0; background-color: black;">
+    <div class="popup-header"><button class="hidebutton" id="settingsminbutton"
+        onclick="system.settingsminmax();">_</button><button class="minmaxbutton"
+        onclick="system.openapp(prompt('appid'));">0</button><button class="closebutton"
+        onclick="system.closesettings();">X</button></div>
+    settings
+  </div>
+  <div class="popup" id="files" style="display:none; opacity: 0;">
+    <div class="popup-header"><button class="hidebutton" id="filesminbutton"
+        onclick="system.filesminmax();">_</button><button class="minmaxbutton"
+        onclick="system.openapp(prompt('appid'));">0</button><button class="closebutton"
+        onclick="system.closefiles();">X</button></div>
+    files
+  </div>
+  <div class="popup" id="catcraft" style="display:none; opacity: 0;">
+    <div class="popup-header noselect"><button class="hidebutton" id="catcraftminbutton"
+        onclick="system.catcraftminmax();">_</button><button class="minmaxbutton">0</button><button class="closebutton"
+        onclick="system.closecatcraft();">X</button></div>
+    <iframe src="" id="catcraftframe"
+      style="position: absolute; top:25px; left:0px; height:calc(100% - 25px); width:100%; "></iframe>
+  </div>
+  <div class="box" id="box">
+    <input type="text" id="searchstart" class="searchstart" placeholder="Search">
+    <div onclick="system.openapp('settings')"
+      style="height:50px; width:20px; border-radius:10px; background-color:rgba(255,255,255,0.5);">settings</div>
+    <div class="bottomstart"><button class="power" onclick="system.power()"><i class="material-icons"
+          style="position: relative; top:2px; left:-4px;">settings_power</i></button></div>
+  </div>
+  <div id="powermenu" class="powermenu"><button onclick="system.shutdown();">Shut Down</button><button id="restart"
+      onclick="system.restart()">Restart</button><button onclick="system.error()">null</button></div>
+  <div class="centermid">
+    <div class="center">
+      <button onclick="system.start()" class="startbutton"
+        style="background-image: url('.CatOSAssets/logo.png');"></button>
+      <button onclick="system.search()" class="startbutton"
+        style="background-image: url('.CatOSAssets/search.png');"></button>
+    </div>
+    <div id="center" class="center">
+    </div>
+    <div class="statusmenu" id="statusmenu">
+      <label class="container" style="position: relative; left:25px; top:20px;">
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+      </label>
+      <label class="container" style="position: relative; left:115px; top:20px;">
+        <input type="checkbox">
+        <span class="checkmark">bt</span>
+      </label>
+      <label class="container" style="position: relative; left:205px; top:20px;">
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label>
+      <br>
+      <label class="container" style="position: relative; left:25px; top:60px;">
+        <input type="checkbox" checked="checked">
+        <span class="checkmark">4</span>
+      </label>
+      <label class="container" style="position: relative; left:115px; top:60px;">
+        <input type="checkbox">
+        <span class="checkmark">5</span>
+      </label>
+      <label class="container" style="position: relative; left:205px; top:60px;">
+        <input type="checkbox">
+        <span class="checkmark">6</span>
+      </label>
+      <br>
+      <div style="position: absolute; top:150px; width:100%; left:5px;">
+        <i class="material-icons" style="font-size: 20px;">&#xe1ae;</i>
+        <input type="range" min="1" max="100" class="slider" id="bright" value="100" onchange="system.brightChange()">
+      </div>
+      <br>
+      <div style="position: absolute; top:200px; width:100%; left:5px;">
+        <i class="fa fa-volume-down" style="font-size: 25px;"></i><input type="range" id="vol" min="1" max="100"
+          onchange="brightChange()" value="100" class="slider">
+      </div>
+      <br>
+      <div style="position: absolute; bottom:0px; left:0px; width:100%; height:30px; background-color: grey;">
+        <div id="battery" class="batt" style="position: relative; top:calc(50% - 5px); left:10px;">
+          <div id="batlevel" class="batlevel"></div>
+          <i class="fa fa-bolt"
+            style="-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;font-size:15px; position: relative; left: 8px; top:-10px;"
+            id="charge"></i>
+          <div class="battop" id="battop"></div>
+        </div>
+        <div id="battxt" class="battxt" style="position: relative; left:40px; bottom:5px;"></div>
+      </div>
+    </div>
+    <div class="status" onclick="system.statusopcl()">
+      <i class="fa fa-wifi" style="font-size:18px; position: relative; left: -5px;"></i>
+      <i class="fa fa-volume-down" style="font-size:18px; position: relative; left: 0px;"></i>
+      <div id="battery" class="batt" style="position:relative; left:5px;">
+        <div id="batlevel1" class="batlevel"></div>
+        <i class="fa fa-bolt"
+          style="-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: black;font-size:15px; position: relative; left: -1px; top:-10px;"
+          id="charge1"></i>
+        <div class="battop" id="battop1"></div>
+      </div>
+    </div>
+    <div id="calmenu" class="calmenu">
+      <div class="calendar-container">
+        <header class="calendar-header">
+          <p class="calendar-current-date"></p>
+          <div class="calendar-navigation">
+            <span id="calendar-prev" class="material-symbols-rounded">chevron_left</span>
+            <span id="calendar-next" class="material-symbols-rounded">chevron_right</span>
+          </div>
+        </header>
+        <div class="calendar-body">
+          <ul class="calendar-weekdays">
+            <li>Sun</li>
+            <li>Mon</li>
+            <li>Tue</li>
+            <li>Wed</li>
+            <li>Thu</li>
+            <li>Fri</li>
+            <li>Sat</li>
+          </ul>
+          <ul class="calendar-dates"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="time" onclick="system.calopcl();">00:00 AM<br>00/00/00</div>
+
+  </div>
+  <div id="power"
+    style="width:100%; height:0%; position: fixed; left:0px; top:0px;  background-color:black; color:white;">
+    <div style="margin: 0;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+      <div class="loader" id="loader"></div><br>
+      <div id="powertxt" style="text-align: center;"></div>
+    </div>
+  </div>
+  <div class="lock" id="lock">
+    <div id="lockusr" class="lockusr">
+      <div id="user" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <div
+          style="height:200px; width:200px; border-radius:100%; background-color:blue;  background-image: linear-gradient(to bottom right, darkblue, purple); border: 1px solid black;">
+        </div><br><br><input style="position:relitive; top:10px; width:200px; font-size:20px;" type="password"
+          id="usrpassword">
+        <div style="display:none;font-size: 20px; top:-10px;" id="welcome">Welcome</div>
+        <button onclick="system.unlock('system');" id="tmpunlock">unlock</button>
+      </div>
+    </div>
+    <div id="cover" class="lockcover" onclick="system.cover()">
+      <div
+        style="margin: 0;position: absolute;top: 30%;left: 50%;transform: translate(-50%, -50%); text-align: center;">
+        <p id="demo" style="font-size: 70px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;"></p><br>
+        <p
+          style="font-size: 20px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; position: relative; top:30px;">
+          cat</p>
+      </div>
+    </div>
+  </div>
+  <div id="poweron"
+    style="width:100%; height:100%; position: fixed; left:0px; top:0px; z-index:101100000000000000000; background-color:black; color:white;">
+    <div style="margin: 0;position: absolute;top: 80%;left: 50%;transform: translate(-50%, -50%);">
+      <div class="loaderon" id="loaderon"></div>
+    </div>
+    <div style="margin: 0;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"></div>
+  </div>
+  <div id="brightnessfilter" class="brightnessfilter"></div>
+</body>
+<script>
+  const d = new Date();
+  let minutes = d.getMinutes();
+  if (minutes < 9) {
+    minutes = "0" + minutes;
+  }
+  let hour = d.getHours();
+  document.getElementById("demo").innerHTML = hour + ":" + minutes;
+</script>
+<script>
+  var openc = 0;
+  var openm = 0;
+  var para = "";
+  var filesmimmaxv = 0;
+  var catcraftmimmaxv = 0;
+  var consoleminmaxv = 0;
+  var webbrowserminmaxv = 0;
+  var tetrismimmaxv = 0;
+  const systemfunct = function () {
+    const system = {
+      statusopcl() {
+        if (openc == 0) {
+          document.getElementById("statusmenu").style.bottom = "60px";
+
+          setTimeout(() => {
+            document.getElementById("statusmenu").style.height = "300px";
+            document.getElementById("statusmenu").style.width = "300px";
+            setTimeout(() => {
+              openc = 1;
+            }, "100");
+          }, "100");
+        } else if (openc == 1) {
+          openc = 0;
+
+          document.getElementById("statusmenu").style.width = "80px";
+          setTimeout(() => {
+            document.getElementById("statusmenu").style.bottom = "0px";
+            document.getElementById("statusmenu").style.height = "35px";
+          }, "100");
+
+        }
+      },
+      filesminmax() {
+        if (filesmimmaxv == 1) {
+          document.getElementById('files').style.display = 'block';
+          filesmimmaxv = 0;
+        } else {
+          document.getElementById('files').style.display = 'none';
+          filesmimmaxv = 1;
+        }
+      },
+      consoleminmax() {
+        if (consoleminmaxv == 1) {
+          document.getElementById('console').style.display = 'block';
+          consoleminmaxv = 0;
+        } else {
+          document.getElementById('console').style.display = 'none';
+          consoleminmaxv = 1;
+        }
+      },
+      webbrowserminmax() {
+        if (webbrowserminmaxv == 1) {
+          document.getElementById('webbrowser').style.display = 'block';
+          webbrowserminmaxv = 0;
+        } else {
+          document.getElementById('webbrowser').style.display = 'none';
+          webbrowserminmaxv = 1;
+        }
+      },
+      webgo() {
+        document.getElementById("web").src = document.getElementById("webinput").value;
+      },
+      catcraftminmax() {
+        if (catcraftmimmaxv == 1) {
+          document.getElementById('catcraft').style.display = 'block';
+          catcraftmimmaxv = 0;
+        } else {
+          document.getElementById('catcraft').style.display = 'none';
+          catcraftmimmaxv = 1;
+        }
+      },
+      calopcl() {
+        if (openm == 0) {
+          document.getElementById("calmenu").style.bottom = "60px";
+
+          setTimeout(() => {
+            document.getElementById("calmenu").style.height = "300px";
+            document.getElementById("calmenu").style.width = "300px";
+            setTimeout(() => {
+              openm = 1;
+            }, "100");
+          }, "100");
+        } else if (openm == 1) {
+          openm = 0;
+
+          document.getElementById("calmenu").style.width = "45px";
+          setTimeout(() => {
+            document.getElementById("calmenu").style.bottom = "0px";
+            document.getElementById("calmenu").style.height = "35px";
+          }, "100");
+
+        }
+      },
+      closetetris() {
+        document.getElementById("tetris").style.opacity = "0";
+        document.getElementById("tetrisbutton").style.opacity = "0";
+        setTimeout(function () {
+          document.getElementById("tetris").style.display = "none";
+          document.getElementById("tetrisbutton").style.display = "none";
+          document.getElementById("tetrisbutton").remove();
+          document.getElementById("tetrisframe").src = "";
+        }, 250);
+      },
+      tetrisminmax() {
+        if (tetrismimmaxv == 1) {
+          document.getElementById('tetris').style.display = 'block';
+          tetrismimmaxv = 0;
+        } else {
+          document.getElementById('tetris').style.display = 'none';
+          tetrismimmaxv = 1;
+        }
+      },
+      closecatcraft() {
+        document.getElementById("catcraft").style.opacity = "0";
+        document.getElementById("catcraftbutton").style.opacity = "0";
+        setTimeout(function () {
+          document.getElementById("catcraftbutton").remove();
+          document.getElementById("catcraft").style.display = "none";
+          document.getElementById("catcraftframe").src = "";
+        }, 250);
+      },
+      closefiles() {
+        document.getElementById("files").style.opacity = "0";
+        document.getElementById("filesbutton").style.opacity = "0";
+        setTimeout(function () {
+          document.getElementById("files").style.display = "none";
+          document.getElementById("filesbutton").style.display = "none";
+          document.getElementById("filesbutton").remove();
+        }, 250);
+      },
+      closeconsole() {
+        document.getElementById("console").style.opacity = "0";
+        document.getElementById("consolebutton").style.opacity = "0";
+        setTimeout(function () {
+          document.getElementById("console").style.display = "none";
+          document.getElementById("consolebutton").style.display = "none";
+          document.getElementById("consolebutton").remove();
+        }, 250);
+      },
+      closesettings() {
+        document.getElementById("settings").style.opacity = "0";
+        document.getElementById("settingsbutton").style.opacity = "0";
+        setTimeout(function () {
+          document.getElementById("settings").style.display = "none";
+          document.getElementById("settingsbutton").style.display = "none";
+          document.getElementById("settingsbutton").remove();
+        }, 250);
+      },
+      closewebbrowser() {
+        document.getElementById("webbrowser").style.opacity = "0";
+        document.getElementById("webbrowserbutton").style.opacity = "0";
+        setTimeout(function () {
+          document.getElementById("webbrowser").style.display = "none";
+          document.getElementById("webbrowserbutton").style.display = "none";
+          document.getElementById("webbrowserbutton").remove();
+        }, 250);
+      },
+      unlock(usrname) {
+        document.getElementById("usrpassword").style.display = "none"
+        document.getElementById("welcome").style.display = "block"
+        setTimeout(() => {
+          document.getElementById("lock").style.display = "none";
+        }, 1000);
+      },
+      cover() {
+        document.getElementById("cover").style.top = "-100%";
+        setTimeout(function () {
+          document.getElementById("cover").style.opacity = "0";
+          document.getElementById("lockusr").style.opacity = "1";
+        }, 500);
+      },
+      openapp(appid) {
+        document.getElementById(appid).style.display = "block";
+        document.getElementById(appid).style.opacity = "1";
+        var appidbutton = appid + "button";
+        if (document.getElementById(appidbutton) == null) {
+          para = document.createElement("button");
+          para.setAttribute("class", "startbutton");
+          para.setAttribute("id", appid + "button");
+          para.setAttribute("onclick", "system." + appid + "minmax()")
+          para.style.backgroundImage = "url('.CatOSAssets/" + appid + ".png')";
+          document.getElementById("center").appendChild(para);
+        }
+        if (appid == "catcraft") {
+          document.getElementById("catcraftframe").src = ".apps/CatCraft/CatCraft.html";
+        }
+        if(appid == "tetris")  {
+          document.getElementById("tetrisframe").src = ".apps/tetris/index.html";
+        }
+      },
+      shutdown() {
+        system.power();
+        setTimeout(function () {
+          document.getElementById("power").style.height = "100%";
+          document.getElementById("loader").style.height = "70px";
+          document.getElementById("loader").style.display = "block";
+          document.getElementById("powertxt").innerHTML = "Shutting Down...";
+          setTimeout(function () {
+            window.close();
+          }, 3000);
+        }, 300);
+      },
+      restart() {
+        system.power();
+        setTimeout(function () {
+          document.getElementById("power").style.height = "100%";
+          document.getElementById("loader").style.height = "70px";
+          document.getElementById("loader").style.display = "block";
+          document.getElementById("powertxt").innerHTML = "Restarting...";
+          setTimeout(function () {
+            location.reload();
+          }, 3000);
+        }, 300);
+      },
+      start() {
+        if (open == 0) {
+          document.getElementById("box").style.height = "70%";
+          document.getElementById("box").style.bottom = "60px";
+          setTimeout(function () {
+            open = 1;
+          }, 100);
+        } else {
+          document.getElementById("box").style.bottom = "-100%";
+          document.getElementById("powermenu").style.height = "0px";
+          open = 0;
+          openp = 0;
+          document.getElementById("box").style.height = "0%";
+        }
+      },
+      power() {
+        if (openp == 0) {
+          document.getElementById("powermenu").style.height = "170px";
+          setTimeout(function () {
+            openp = 1;
+          }, 100);
+        } else {
+          document.getElementById("powermenu").style.height = "0px";
+          openp = 0;
+        }
+      },
+      closeconsole() {
+        document.getElementById("console").style.opacity = "0";
+        document.getElementById("consolebutton").style.opacity = "0";
+        setTimeout(function () {
+          document.getElementById("console").style.display = "none";
+          document.getElementById("consolebutton").style.display = "none";
+          document.getElementById("consolebutton").remove();
+        }, 250);
+      },
+      closesettings() {
+        document.getElementById("settings").style.opacity = "0";
+        document.getElementById("settingsbutton").style.opacity = "0";
+        setTimeout(function () {
+          document.getElementById("settings").style.display = "none";
+          document.getElementById("settingsbutton").style.display = "none";
+          document.getElementById("settingsbutton").remove();
+        }, 250);
+      },
+      consoleSubmit() {
+        var code = document.getElementById("consoleinput").value;
+        eval(code);
+      },
+      error(errcode) {
+        document.getElementById("body").style.backgroundImage = "";
+        document.getElementById("body").innerHTML = "<div style='position:fixed; top:0px; left:0px; height:120%; width:120%; background-color:black; border:20px solid black;'><p style='font-size:40px;'>Error!</p><br>Error code: " + errcode + "</div>";
+        localStorage.setItem("error", "true");
+        localStorage.setItem("errorcode", errcode);
+
+      },
+      brightChange() {
+        var bright = document.getElementById("bright").value;
+        var color = (100 - bright) / 100;
+        document.getElementById("brightnessfilter").style.backgroundColor = "rgba(0,0,0," + color + ")"
+      }
+    }
+    return system;
+  }
+  const system = systemfunct();
+  navigator.getBattery().then(function (battery) {
+    var batlevel = Math.round(battery.level * 100)
+    var batlevelt = batlevel / 5.555556
+    document.getElementById("battxt").innerHTML = batlevel + "%"
+    document.getElementById("batlevel").style.width = batlevelt + "px";
+    document.getElementById("batlevel1").style.width = batlevelt + "px"
+    if (battery.charging) {
+      document.getElementById("charge").style.display = "block"
+      document.getElementById("charge1").style.display = "block"
+      document.getElementById("battop").style.top = "-20px"
+      document.getElementById("battop1").style.top = "-20px"
+    } else {
+      document.getElementById("charge").style.display = "none"
+      document.getElementById("charge1").style.display = "none"
+      document.getElementById("battop").style.top = "-5px"
+      document.getElementById("battop1").style.top = "-5px"
+    }
+    battery.addEventListener('chargingchange', function () {
+      if (battery.charging) {
+        document.getElementById("charge").style.display = "block"
+        document.getElementById("battop").style.top = "-20px"
+        document.getElementById("battop1").style.top = "-20px"
+        document.getElementById("charge1").style.display = "block"
+      } else {
+        document.getElementById("charge").style.display = "none"
+        document.getElementById("charge1").style.display = "none"
+        document.getElementById("battop").style.top = "-5px"
+        document.getElementById("battop1").style.top = "-5px"
+      }
+    });
+    battery.addEventListener('levelchange', function () {
+      console.log(this.level);
+      batlevel = Math.round(this.level * 100)
+      batlevelt = batlevel / 5.555556
+      document.getElementById("battxt").innerHTML = batlevel + "%"
+      document.getElementById("batlevel").style.width = batlevelt + "px"
+      document.getElementById("batlevel1").style.width = batlevelt + "px"
+    });
+  });
+
+
+
+  var timestampSeconds = Math.floor(Date.now());
+
+  setTimeout(function () {
+    document.getElementById("poweron").style.height = "100%";
+    document.getElementById("loaderon").style.height = "30px";
+    document.getElementById("loaderon").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("loaderon").style.opacity = "0";
+      setTimeout(function () {
+        document.getElementById("poweron").style.height = "0%";
+        document.getElementById("loaderon").style.height = "0px";
+        document.getElementById("loaderon").style.display = "none";
+      }, 500);
+    }, 3000);
+  }, 1000);
+
+  window.addEventListener('click', function (e) {
+
+    if (document.getElementById('box').contains(e.target)) {
+      // Clicked in box
+    } else {
+      if (open == 1) {
+        document.getElementById("box").style.bottom = "-100%";
+        open = 0;
+      }
+    }
+    if (document.getElementById('powermenu').contains(e.target)) {
+
+    } else {
+      if (openp == 1) {
+        document.getElementById("powermenu").style.height = "0px";
+        openp = 0;
+      }
+    }
+    if (document.getElementById('statusmenu').contains(e.target)) {
+
+    } else {
+      if (openc == 1) {
+        system.statusopcl();
+      }
+    }
+    if (document.getElementById('calmenu').contains(e.target)) {
+
+    } else {
+      if (openm == 1) {
+        system.calopcl();
+      }
+    }
+  });
+  var open = 0;
+  var openp = 0;
+  window.onload = function () {
+    initDragElement();
+    initResizeElement();
+  };
+
+  function initDragElement() {
+    var pos1 = 0,
+      pos2 = 0,
+      pos3 = 0,
+      pos4 = 0;
+    var popups = document.getElementsByClassName("popup");
+    var elmnt = null;
+    var currentZIndex = 100; //TODO reset z index when a threshold is passed
+
+    for (var i = 0; i < popups.length; i++) {
+      var popup = popups[i];
+      var header = getHeader(popup);
+
+      popup.onmousedown = function () {
+        this.style.zIndex = "" + ++currentZIndex;
+      };
+
+      if (header) {
+        header.parentPopup = popup;
+        header.onmousedown = dragMouseDown;
+      }
+    }
+
+    function dragMouseDown(e) {
+      elmnt = this.parentPopup;
+      elmnt.style.zIndex = "" + ++currentZIndex;
+
+      e = e || window.event;
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+      if (!elmnt) {
+        return;
+      }
+
+      e = e || window.event;
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      // set the element's new position:
+      elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+      elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+    }
+
+    function closeDragElement() {
+      /* stop moving when mouse button is released:*/
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+
+    function getHeader(element) {
+      var headerItems = element.getElementsByClassName("popup-header");
+
+      if (headerItems.length === 1) {
+        return headerItems[0];
+      }
+
+      return null;
+    }
+  }
+
+  function initResizeElement() {
+    var popups = document.getElementsByClassName("popup");
+    var element = null;
+    var startX, startY, startWidth, startHeight;
+
+    for (var i = 0; i < popups.length; i++) {
+      var p = popups[i];
+
+      var right = document.createElement("div");
+      right.className = "resizer-right";
+      p.appendChild(right);
+      right.addEventListener("mousedown", initDrag, false);
+      right.parentPopup = p;
+
+      var bottom = document.createElement("div");
+      bottom.className = "resizer-bottom";
+      p.appendChild(bottom);
+      bottom.addEventListener("mousedown", initDrag, false);
+      bottom.parentPopup = p;
+
+      var both = document.createElement("div");
+      both.className = "resizer-both";
+      p.appendChild(both);
+      both.addEventListener("mousedown", initDrag, false);
+      both.parentPopup = p;
+    }
+
+    function initDrag(e) {
+      element = this.parentPopup;
+
+      startX = e.clientX;
+      startY = e.clientY;
+      startWidth = parseInt(
+        document.defaultView.getComputedStyle(element).width,
+        10
+      );
+      startHeight = parseInt(
+        document.defaultView.getComputedStyle(element).height,
+        10
+      );
+      document.documentElement.addEventListener("mousemove", doDrag, false);
+      document.documentElement.addEventListener("mouseup", stopDrag, false);
+    }
+
+    function doDrag(e) {
+      element.style.width = startWidth + e.clientX - startX + "px";
+      element.style.height = startHeight + e.clientY - startY + "px";
+    }
+
+    function stopDrag() {
+      document.documentElement.removeEventListener("mousemove", doDrag, false);
+      document.documentElement.removeEventListener("mouseup", stopDrag, false);
+    }
+  }
+
+
+  let date = new Date(); // creates a new date object with the current date and time
+  let year = date.getFullYear(); // gets the current year
+  let month = date.getMonth(); // gets the current month (index based, 0-11)
+
+  const day = document.querySelector(".calendar-dates"); // selects the element with class "calendar-dates"
+  const currdate = document.querySelector(".calendar-current-date"); // selects the element with class "calendar-current-date"
+  const prenexIcons = document.querySelectorAll(".calendar-navigation span"); // selects all elements with class "calendar-navigation span"
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"];
+  const manipulate = () => {
+
+    let dayone = new Date(year, month, 1).getDay();
+
+    // get the last date of the month
+    let lastdate = new Date(year, month + 1, 0).getDate();
+
+    // get the day of the last date of the month
+    let dayend = new Date(year, month, lastdate).getDay();
+
+    // get the last date of the previous month
+    let monthlastdate = new Date(year, month, 0).getDate();
+
+    let lit = ""; // variable to store the generated calendar HTML
+
+    // loop to add the last dates of the previous month
+    for (let i = dayone; i > 0; i--) {
+      lit += `<li class="inactive">${monthlastdate - i + 1}</li>`;
+    }
+
+    // loop to add the dates of the current month
+    for (let i = 1; i <= lastdate; i++) {
+      // check if the current date is today
+      let isToday = i === date.getDate() && month === new Date().getMonth() && year === new Date().getFullYear() ? "active" : "";
+      lit += `<li class="${isToday}">${i}</li>`;
+    }
+
+    // loop to add the first dates of the next month
+    for (let i = dayend; i < 6; i++) {
+      lit += `<li class="inactive">${i - dayend + 1}</li>`
+    }
+
+    // update the text of the current date element with the formatted current month and year
+    currdate.innerText = `${months[month]} ${year}`;
+
+    // update the HTML of the dates element with the generated calendar
+    day.innerHTML = lit;
+  }
+
+  manipulate();
+
+  // Attach a click event listener to each icon
+  prenexIcons.forEach(icon => {
+
+    // When an icon is clicked
+    icon.addEventListener("click", () => {
+      month = icon.id === "calendar-prev" ? month - 1 : month + 1;
+      if (month < 0 || month > 11) {
+        date = new Date(year, month, new Date().getDate());
+        year = date.getFullYear();
+        month = date.getMonth();
+      }
+      else {
+        date = new Date();
+      }
+      manipulate();
+    });
+  });
+</script>
+
+</html>
